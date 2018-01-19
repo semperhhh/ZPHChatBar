@@ -31,6 +31,10 @@
 @interface ZHChatBar : UIView
 @property (assign, nonatomic) CGFloat superViewHeight;
 /**
+ 父控制器
+ */
+@property (nonatomic,strong)UIViewController *superController;
+/**
  默认inti是64高度
 
  @return 输入框

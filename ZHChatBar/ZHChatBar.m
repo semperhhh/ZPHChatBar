@@ -10,8 +10,12 @@
 #import "ZPHTextView.h"
 #import "ZPHChatLabelling.h"
 #import "ZPHChatMoreView.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface ZHChatBar ()<UITextViewDelegate,ZPHChatLabellingDataSource,ZPHChatLabellingDelegate>
+CGFloat chatBarHeight = 64;
+CGFloat chatBarMoreHeight = 270;
+
+@interface ZHChatBar ()<UITextViewDelegate,ZPHChatLabellingDataSource,ZPHChatLabellingDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 /**
  文本框
  */
@@ -34,7 +38,7 @@
 
 -(instancetype)init {
     
-    self = [self initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height -64, [UIScreen mainScreen].bounds.size.width, 64)];
+    self = [self initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height -64, [UIScreen mainScreen].bounds.size.width, chatBarHeight)];
     
     return self;
 }
@@ -112,6 +116,7 @@
         case ZPHChatLabellingTypeCamera: {
             
             NSLog(@"camera");
+            [self chatStartTheCamera];
         }
             break;
         case ZPHChatLabellingTypeFace: {
@@ -122,6 +127,7 @@
         case ZPHChatLabellingTypePicture: {
             
             NSLog(@"picture");
+            [self chatStartThePhotoAlbum];
         }
             break;
         case ZPHChatLabellingTypeVoice: {
@@ -132,7 +138,7 @@
         case ZPHChatLabellingTypeMore: {
             
             NSLog(@"more");
-            [self setFrame:CGRectMake(0, self.superViewHeight -270, self.frame.size.width, 270) animated:YES];
+            [self setFrame:CGRectMake(0, self.superViewHeight -chatBarMoreHeight, self.frame.size.width, chatBarMoreHeight) animated:YES];
         }
             break;
         default:
@@ -140,7 +146,41 @@
     }
 }
 
-//添加占位符
+#pragma mark --调用相机
+-(void)chatStartTheCamera {
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];//读取设备授权状态
+    if (authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) {
+        NSLog(@"相机权限受限");
+        return;
+    }
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSLog(@"设备没有摄像头");
+        return;
+    }
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self.superController presentViewController:imagePicker animated:YES completion:nil];
+}
+
+#pragma mark --调用相册
+-(void)chatStartThePhotoAlbum {
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self.superController presentViewController:imagePicker animated:YES completion:nil];
+}
+
+#pragma mark --UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    NSLog(@"%@",info);
+    //调用代理
+}
+
+#pragma mark --添加占位符
 -(void)chatAddTextViewPlaceholderWithTitle:(NSString *)title placeholderColor:(UIColor *)color {
     
     self.textView.placeholderColor = color;
@@ -150,9 +190,9 @@
 //关闭输入框
 -(void)endInputing {
     
-    [self.textView resignFirstResponder];
+    [self.textView resignFirstResponder];//取消键盘响应
+    [self setFrame:CGRectMake(0, self.superViewHeight -chatBarHeight, self.frame.size.width, chatBarHeight) animated:YES];//输入框移到底部
 }
-
 
 -(CGFloat)bottomHeight {
     

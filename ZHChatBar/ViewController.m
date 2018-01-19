@@ -30,6 +30,7 @@
     [super viewDidLoad];
 
     _zhChatBar = [[ZHChatBar alloc]init];
+    _zhChatBar.superController = self;
     [_zhChatBar setSuperViewHeight:[UIScreen mainScreen].bounds.size.height];
     [self.view addSubview:_zhChatBar];
 }
