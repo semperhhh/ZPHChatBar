@@ -125,10 +125,16 @@ CGFloat chatBarFaceHeight = 200;
     }
 }
 
-//
+//文本框限制输入
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
-    NSLog(@"textView change");
+    NSLog(@"textView change text - %@",text);
+    
+    if ([text isEqualToString:@"\n"]) {
+        
+        [self setTextMessage:text];
+        return NO;
+    }
 
     return YES;
 }
@@ -173,6 +179,7 @@ CGFloat chatBarFaceHeight = 200;
             
             NSLog(@"more");
             [self showMoreView:YES];
+            [self showFaceView:NO];
         }
             break;
         default:
@@ -243,6 +250,30 @@ CGFloat chatBarFaceHeight = 200;
     
     NSLog(@"%@",info);
     //调用代理
+}
+
+#pragma mark --发送消息
+//发送文本
+-(void)setTextMessage:(NSString *)message {
+    
+    if (!message && message.length == 0) {
+        return;
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarSendMessageWithChatBar:message:)]) {
+        [self.delegate chatBarSendMessageWithChatBar:self message:message];
+    }
+}
+
+//发送图片
+-(void)setPictureMessage:(UIImage *)image {
+    
+    
+}
+//发送声音
+-(void)setVoiceData:(NSData *)voiceData {
+    
+    
 }
 
 #pragma mark --添加占位符
