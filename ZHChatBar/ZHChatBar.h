@@ -12,6 +12,13 @@
 #define kChatLabellingHeight 32.0f
 
 #import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSInteger,PHViewShowType){
+    PHViewShowTypeNothing = 0,  //不显示
+    PHViewShowTypeFace = 2,     //显示表情
+    PHViewShowTypeMore = 5,     //显示更多
+};
+
 @class ZHChatBar;
 
 @protocol ZHChatBarDelegate <NSObject>

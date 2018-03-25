@@ -6,14 +6,22 @@
 //  Copyright © 2017年 zph. All rights reserved.
 //
 
+//适配iphonex
+#define StausbarHeight  ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define iPhoneX  StausbarHeight >20? YES:NO
+// 底部安全区域远离高度
+#define kBottomSafeHeight   (StausbarHeight >20? 34 : 0)
+
 #import "ZHChatBar.h"
 #import "ZPHTextView.h"
-#import "ZPHChatLabelling.h"
-#import "ZPHChatMoreView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ZPHChatLabelling.h"//标签
+#import "ZPHChatMoreView.h" //更多
+#import "ZPHChatFaceView.h" //表情
 
 CGFloat chatBarHeight = 64;
 CGFloat chatBarMoreHeight = 270;
+CGFloat chatBarFaceHeight = 200;
 
 @interface ZHChatBar ()<UITextViewDelegate,ZPHChatLabellingDataSource,ZPHChatLabellingDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 /**
@@ -32,6 +40,10 @@ CGFloat chatBarMoreHeight = 270;
  更多界面
  */
 @property (nonatomic,strong)ZPHChatMoreView *chatmoreView;
+/**
+ 表情界面
+ */
+@property (nonatomic,strong)ZPHChatFaceView *chatfaceView;
 @property (nonatomic,assign)CGFloat bottomHeight;
 @end
 @implementation ZHChatBar
@@ -76,29 +88,49 @@ CGFloat chatBarMoreHeight = 270;
     [self addSubview:self.backView];
 }
 
+#pragma mark --UITextViewDelegate
+
 //输入框将要改变
 -(void)textViewDidBeginEditing:(UITextView *)textView {
     
     //占位符判断
     self.textView.placeholderLabel.hidden = textView.text.length != 0 ? YES : NO;
+    [self showMoreView:NO];
+    [self showFaceView:NO];
 }
 
 //输入框改变
 -(void)textViewDidChange:(UITextView *)textView {
     
-    CGRect textViewFrame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, self.textView.frame.size.height + kChatLabellingHeight);
-    CGSize textSize = [self.textView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), 1000.0f)];
-    CGFloat offset = 10;
-    textView.scrollEnabled = (textSize.height +0.1 > kMaxHeight -offset);
-//    textViewFrame.size.height = MAX(34, MIN(kMaxHeight, textSize.height));    //应该是自适应高度
+    CGRect textViewFrame = self.textView.frame;
     
+    //文本size
+    CGSize textSize = [self.textView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), 1000.0f)];
+    
+    CGFloat offset = 10;
+    //文本的滚动
+    textView.scrollEnabled = (textSize.height +0.1 > kMaxHeight -offset);
+    //文本框的高
+    textViewFrame.size.height = 64;
+    
+    //文本框的位置
     CGRect addBarFrame = self.frame;
     addBarFrame.size.height = textViewFrame.size.height;
     addBarFrame.origin.y = self.superViewHeight - self.bottomHeight - addBarFrame.size.height;
     [self setFrame:addBarFrame animated:NO];
+    
+    //文本框滚动
     if (textView.scrollEnabled) {
         [textView scrollRangeToVisible:NSMakeRange(textView.text.length - 2, 1)];
     }
+}
+
+//
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    NSLog(@"textView change");
+
+    return YES;
 }
 
 #pragma mark --ZPHChatLabellingDataSource
@@ -122,6 +154,8 @@ CGFloat chatBarMoreHeight = 270;
         case ZPHChatLabellingTypeFace: {
             
             NSLog(@"face");
+            [self showFaceView:YES];
+            [self showMoreView:NO];
         }
             break;
         case ZPHChatLabellingTypePicture: {
@@ -138,11 +172,42 @@ CGFloat chatBarMoreHeight = 270;
         case ZPHChatLabellingTypeMore: {
             
             NSLog(@"more");
-            [self setFrame:CGRectMake(0, self.superViewHeight -chatBarMoreHeight, self.frame.size.width, chatBarMoreHeight) animated:YES];
+            [self showMoreView:YES];
         }
             break;
         default:
             break;
+    }
+}
+
+#pragma mark --切换界面
+-(void)showViewWithType:(PHViewShowType)showType {
+    
+    
+}
+
+//表情展示
+-(void)showFaceView:(BOOL)show {
+    
+    if (show) {
+        
+        [self addSubview:self.chatfaceView];
+        [self setFrame:CGRectMake(0, self.superViewHeight -chatBarFaceHeight -chatBarHeight -kBottomSafeHeight, self.frame.size.width, chatBarHeight) animated:YES];
+    }else {
+        
+        [self.chatfaceView removeFromSuperview];
+    }
+}
+
+//更多展示
+-(void)showMoreView:(BOOL)show {
+    
+    if (show) {
+        
+        [self addSubview:self.chatmoreView];
+        [self setFrame:CGRectMake(0, self.superViewHeight -chatBarMoreHeight -chatBarHeight -kBottomSafeHeight, self.frame.size.width, chatBarHeight) animated:YES];
+    }else {
+        [self.chatmoreView removeFromSuperview];
     }
 }
 
@@ -194,17 +259,20 @@ CGFloat chatBarMoreHeight = 270;
     [self setFrame:CGRectMake(0, self.superViewHeight -chatBarHeight, self.frame.size.width, chatBarHeight) animated:YES];//输入框移到底部
 }
 
+//chatbar到底部的距离
 -(CGFloat)bottomHeight {
     
-//    if (self.chatmoreView) {
-//        return MAX(self.keyboardFrame.size.height, self.chatmoreView.frame.size.height);
-//    }else{
+    if (self.chatmoreView.superview) {
+        return MAX(self.keyboardFrame.size.height, self.chatmoreView.frame.size.height);
+    }else{
         return MAX(self.keyboardFrame.size.height, CGFLOAT_MIN);
-//    }
+    }
 }
 
 #pragma mark --lazy loading
--(ZPHTextView *)textView {//输入框
+
+//输入框
+-(ZPHTextView *)textView {
     
     if (!_textView) {
     
@@ -241,6 +309,15 @@ CGFloat chatBarMoreHeight = 270;
         _chatmoreView = [[ZPHChatMoreView alloc]init];
     }
     return _chatmoreView;
+}
+
+//表情界面
+-(ZPHChatFaceView *)chatfaceView {
+    
+    if (!_chatfaceView) {
+        _chatfaceView = [[ZPHChatFaceView alloc]init];
+    }
+    return _chatfaceView;
 }
 
 #pragma mark - Getters

@@ -1,18 +1,18 @@
 //
-//  ZPHChatMoreView.m
+//  ZPHChatFaceView.m
 //  ZHChatBar
 //
-//  Created by 张鹏辉 on 2017/9/19.
-//  Copyright © 2017年 zph. All rights reserved.
+//  Created by zph on 25/03/2018.
+//  Copyright © 2018 zph. All rights reserved.
 //
 
-#import "ZPHChatMoreView.h"
+#import "ZPHChatFaceView.h"
 
-@implementation ZPHChatMoreView
+@implementation ZPHChatFaceView
 
 -(instancetype)init {
     
-    self = [self initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 270)];
+    self = [self initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 210)];
     
     return self;
 }

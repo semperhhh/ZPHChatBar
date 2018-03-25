@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DA2EDD531F6FBD3C0080B57A /* ZPHChatLabelling.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2EDD521F6FBD3C0080B57A /* ZPHChatLabelling.m */; };
 		DA2EDD561F70F5D10080B57A /* ZPHChatMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2EDD551F70F5D10080B57A /* ZPHChatMoreView.m */; };
-		DA2F06FC1F8A0E6B002D09F3 /* test1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DAB45D511F7A4577006576B4 /* test1.bundle */; };
 		DA96AC171F6771E300F50FC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC161F6771E300F50FC1 /* main.m */; };
 		DA96AC1A1F6771E300F50FC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC191F6771E300F50FC1 /* AppDelegate.m */; };
 		DA96AC1D1F6771E300F50FC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC1C1F6771E300F50FC1 /* ViewController.m */; };
@@ -19,7 +18,7 @@
 		DA96AC281F6771E300F50FC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA96AC261F6771E300F50FC1 /* LaunchScreen.storyboard */; };
 		DA96AC311F67720E00F50FC1 /* ZHChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC301F67720E00F50FC1 /* ZHChatBar.m */; };
 		DA96AC341F67BDF700F50FC1 /* ZPHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC331F67BDF700F50FC1 /* ZPHTextView.m */; };
-		DAB45D4E1F7A418E006576B4 /* bundletest.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = DAB45D4D1F7A4151006576B4 /* bundletest.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DAFD195E2067D6480001930B /* ZPHChatFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD195D2067D6480001930B /* ZPHChatFaceView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				DAB45D4E1F7A418E006576B4 /* bundletest.bundle in Embed PlugIns */,
 			);
 			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,8 +54,8 @@
 		DA96AC301F67720E00F50FC1 /* ZHChatBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHChatBar.m; sourceTree = "<group>"; };
 		DA96AC321F67BDF700F50FC1 /* ZPHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPHTextView.h; sourceTree = "<group>"; };
 		DA96AC331F67BDF700F50FC1 /* ZPHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPHTextView.m; sourceTree = "<group>"; };
-		DAB45D4D1F7A4151006576B4 /* bundletest.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = bundletest.bundle; sourceTree = "<group>"; };
-		DAB45D511F7A4577006576B4 /* test1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = test1.bundle; sourceTree = "<group>"; };
+		DAFD195C2067D6480001930B /* ZPHChatFaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHChatFaceView.h; sourceTree = "<group>"; };
+		DAFD195D2067D6480001930B /* ZPHChatFaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHChatFaceView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +88,6 @@
 		DA96AC141F6771E300F50FC1 /* ZHChatBar */ = {
 			isa = PBXGroup;
 			children = (
-				DAB45D511F7A4577006576B4 /* test1.bundle */,
-				DAB45D4D1F7A4151006576B4 /* bundletest.bundle */,
 				DA96AC181F6771E300F50FC1 /* AppDelegate.h */,
 				DA96AC191F6771E300F50FC1 /* AppDelegate.m */,
 				DA96AC1B1F6771E300F50FC1 /* ViewController.h */,
@@ -110,6 +106,8 @@
 				DA2EDD521F6FBD3C0080B57A /* ZPHChatLabelling.m */,
 				DA2EDD541F70F5D10080B57A /* ZPHChatMoreView.h */,
 				DA2EDD551F70F5D10080B57A /* ZPHChatMoreView.m */,
+				DAFD195C2067D6480001930B /* ZPHChatFaceView.h */,
+				DAFD195D2067D6480001930B /* ZPHChatFaceView.m */,
 			);
 			path = ZHChatBar;
 			sourceTree = "<group>";
@@ -183,7 +181,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA96AC281F6771E300F50FC1 /* LaunchScreen.storyboard in Resources */,
-				DA2F06FC1F8A0E6B002D09F3 /* test1.bundle in Resources */,
 				DA96AC251F6771E300F50FC1 /* Assets.xcassets in Resources */,
 				DA96AC201F6771E300F50FC1 /* Main.storyboard in Resources */,
 			);
@@ -204,6 +201,7 @@
 				DA96AC231F6771E300F50FC1 /* ZHChatBar.xcdatamodeld in Sources */,
 				DA96AC1A1F6771E300F50FC1 /* AppDelegate.m in Sources */,
 				DA96AC171F6771E300F50FC1 /* main.m in Sources */,
+				DAFD195E2067D6480001930B /* ZPHChatFaceView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
