@@ -128,11 +128,9 @@ CGFloat chatBarFaceHeight = 200;
 //文本框限制输入
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
-    NSLog(@"textView change text - %@",text);
-    
     if ([text isEqualToString:@"\n"]) {
         
-        [self setTextMessage:text];
+        [self setTextMessage:textView.text];
         return NO;
     }
 
@@ -260,6 +258,8 @@ CGFloat chatBarFaceHeight = 200;
         return;
     }
     
+    NSLog(@"send text message - %@",message);
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarSendMessageWithChatBar:message:)]) {
         [self.delegate chatBarSendMessageWithChatBar:self message:message];
     }
@@ -268,12 +268,17 @@ CGFloat chatBarFaceHeight = 200;
 //发送图片
 -(void)setPictureMessage:(UIImage *)image {
     
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarSendPictureWithChatBar:picture:)]) {
+        [self.delegate chatBarSendPictureWithChatBar:self picture:image];
+    }
 }
+
 //发送声音
 -(void)setVoiceData:(NSData *)voiceData {
     
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarSendVoiceWithChatBar:voice:)]) {
+        [self.delegate chatBarSendVoiceWithChatBar:self voice:voiceData];
+    }
 }
 
 #pragma mark --添加占位符
@@ -307,7 +312,7 @@ CGFloat chatBarFaceHeight = 200;
     
     if (!_textView) {
     
-        _textView = [[ZPHTextView alloc]initWithFrame:CGRectMake(5, 0, self.bounds.size.width -10, self.bounds.size.height -32)];
+        _textView = [[ZPHTextView alloc]initWithFrame:CGRectMake(5, 2, self.bounds.size.width -10, self.bounds.size.height -32)];
         _textView.inputAccessoryView = [[UIView alloc] init];
         _textView.font = [UIFont systemFontOfSize:16.0f];
         _textView.delegate = self;
