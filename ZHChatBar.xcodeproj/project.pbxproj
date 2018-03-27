@@ -19,6 +19,15 @@
 		DA96AC311F67720E00F50FC1 /* ZHChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC301F67720E00F50FC1 /* ZHChatBar.m */; };
 		DA96AC341F67BDF700F50FC1 /* ZPHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC331F67BDF700F50FC1 /* ZPHTextView.m */; };
 		DAFD195E2067D6480001930B /* ZPHChatFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD195D2067D6480001930B /* ZPHChatFaceView.m */; };
+		DAFD19632069EDD10001930B /* ZPHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD19622069EDD10001930B /* ZPHMessage.m */; };
+		DAFD19662069F1E60001930B /* ZPHMessageTableViewCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD19652069F1E60001930B /* ZPHMessageTableViewCellLayout.m */; };
+		DAFD19692069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD19682069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m */; };
+		DAFD196C2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD196B2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m */; };
+		DAFD196F2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD196E2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m */; };
+		DAFD19722069F2430001930B /* ZPHMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD19712069F2430001930B /* ZPHMessageTableViewCell.m */; };
+		DAFD19752069F2540001930B /* ZPHMessageTableViewCellText.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD19742069F2540001930B /* ZPHMessageTableViewCellText.m */; };
+		DAFD19782069F25D0001930B /* ZPHMessageTableViewCellImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD19772069F25D0001930B /* ZPHMessageTableViewCellImage.m */; };
+		DAFD197B2069F2680001930B /* ZPHMessageTableViewCellVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD197A2069F2680001930B /* ZPHMessageTableViewCellVoice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +65,24 @@
 		DA96AC331F67BDF700F50FC1 /* ZPHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPHTextView.m; sourceTree = "<group>"; };
 		DAFD195C2067D6480001930B /* ZPHChatFaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHChatFaceView.h; sourceTree = "<group>"; };
 		DAFD195D2067D6480001930B /* ZPHChatFaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHChatFaceView.m; sourceTree = "<group>"; };
+		DAFD19612069EDD10001930B /* ZPHMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessage.h; sourceTree = "<group>"; };
+		DAFD19622069EDD10001930B /* ZPHMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessage.m; sourceTree = "<group>"; };
+		DAFD19642069F1E60001930B /* ZPHMessageTableViewCellLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellLayout.h; sourceTree = "<group>"; };
+		DAFD19652069F1E60001930B /* ZPHMessageTableViewCellLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellLayout.m; sourceTree = "<group>"; };
+		DAFD19672069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellLayoutText.h; sourceTree = "<group>"; };
+		DAFD19682069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellLayoutText.m; sourceTree = "<group>"; };
+		DAFD196A2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellLayoutImage.h; sourceTree = "<group>"; };
+		DAFD196B2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellLayoutImage.m; sourceTree = "<group>"; };
+		DAFD196D2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellLayoutVoice.h; sourceTree = "<group>"; };
+		DAFD196E2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellLayoutVoice.m; sourceTree = "<group>"; };
+		DAFD19702069F2430001930B /* ZPHMessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCell.h; sourceTree = "<group>"; };
+		DAFD19712069F2430001930B /* ZPHMessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCell.m; sourceTree = "<group>"; };
+		DAFD19732069F2540001930B /* ZPHMessageTableViewCellText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellText.h; sourceTree = "<group>"; };
+		DAFD19742069F2540001930B /* ZPHMessageTableViewCellText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellText.m; sourceTree = "<group>"; };
+		DAFD19762069F25D0001930B /* ZPHMessageTableViewCellImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellImage.h; sourceTree = "<group>"; };
+		DAFD19772069F25D0001930B /* ZPHMessageTableViewCellImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellImage.m; sourceTree = "<group>"; };
+		DAFD19792069F2680001930B /* ZPHMessageTableViewCellVoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHMessageTableViewCellVoice.h; sourceTree = "<group>"; };
+		DAFD197A2069F2680001930B /* ZPHMessageTableViewCellVoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHMessageTableViewCellVoice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +115,8 @@
 		DA96AC141F6771E300F50FC1 /* ZHChatBar */ = {
 			isa = PBXGroup;
 			children = (
+				DAFD19602069EDAD0001930B /* Cell */,
+				DAFD195F2069ED940001930B /* Model */,
 				DA96AC181F6771E300F50FC1 /* AppDelegate.h */,
 				DA96AC191F6771E300F50FC1 /* AppDelegate.m */,
 				DA96AC1B1F6771E300F50FC1 /* ViewController.h */,
@@ -118,6 +147,38 @@
 				DA96AC161F6771E300F50FC1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DAFD195F2069ED940001930B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAFD19612069EDD10001930B /* ZPHMessage.h */,
+				DAFD19622069EDD10001930B /* ZPHMessage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DAFD19602069EDAD0001930B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DAFD19642069F1E60001930B /* ZPHMessageTableViewCellLayout.h */,
+				DAFD19652069F1E60001930B /* ZPHMessageTableViewCellLayout.m */,
+				DAFD19672069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.h */,
+				DAFD19682069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m */,
+				DAFD196A2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.h */,
+				DAFD196B2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m */,
+				DAFD196D2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.h */,
+				DAFD196E2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m */,
+				DAFD19702069F2430001930B /* ZPHMessageTableViewCell.h */,
+				DAFD19712069F2430001930B /* ZPHMessageTableViewCell.m */,
+				DAFD19732069F2540001930B /* ZPHMessageTableViewCellText.h */,
+				DAFD19742069F2540001930B /* ZPHMessageTableViewCellText.m */,
+				DAFD19762069F25D0001930B /* ZPHMessageTableViewCellImage.h */,
+				DAFD19772069F25D0001930B /* ZPHMessageTableViewCellImage.m */,
+				DAFD19792069F2680001930B /* ZPHMessageTableViewCellVoice.h */,
+				DAFD197A2069F2680001930B /* ZPHMessageTableViewCellVoice.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,12 +257,21 @@
 				DA96AC341F67BDF700F50FC1 /* ZPHTextView.m in Sources */,
 				DA2EDD531F6FBD3C0080B57A /* ZPHChatLabelling.m in Sources */,
 				DA96AC311F67720E00F50FC1 /* ZHChatBar.m in Sources */,
+				DAFD196F2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m in Sources */,
 				DA96AC1D1F6771E300F50FC1 /* ViewController.m in Sources */,
 				DA2EDD561F70F5D10080B57A /* ZPHChatMoreView.m in Sources */,
 				DA96AC231F6771E300F50FC1 /* ZHChatBar.xcdatamodeld in Sources */,
+				DAFD197B2069F2680001930B /* ZPHMessageTableViewCellVoice.m in Sources */,
+				DAFD19752069F2540001930B /* ZPHMessageTableViewCellText.m in Sources */,
+				DAFD19632069EDD10001930B /* ZPHMessage.m in Sources */,
+				DAFD19722069F2430001930B /* ZPHMessageTableViewCell.m in Sources */,
 				DA96AC1A1F6771E300F50FC1 /* AppDelegate.m in Sources */,
+				DAFD19662069F1E60001930B /* ZPHMessageTableViewCellLayout.m in Sources */,
+				DAFD196C2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m in Sources */,
 				DA96AC171F6771E300F50FC1 /* main.m in Sources */,
 				DAFD195E2067D6480001930B /* ZPHChatFaceView.m in Sources */,
+				DAFD19782069F25D0001930B /* ZPHMessageTableViewCellImage.m in Sources */,
+				DAFD19692069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

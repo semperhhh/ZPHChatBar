@@ -263,6 +263,8 @@ CGFloat chatBarFaceHeight = 200;
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarSendMessageWithChatBar:message:)]) {
         [self.delegate chatBarSendMessageWithChatBar:self message:message];
     }
+    
+    self.textView.text = @"";
 }
 
 //发送图片
@@ -366,8 +368,8 @@ CGFloat chatBarFaceHeight = 200;
     }else{
         [self setFrame:frame];
     }
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarFrameDidChange:frame:)]) {
-//        [self.delegate chatBarFrameDidChange:self frame:frame];
-//    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBarFrameDidChange:frame:)]) {
+        [self.delegate chatBarFrameDidChange:self frame:frame];
+    }
 }
 @end
