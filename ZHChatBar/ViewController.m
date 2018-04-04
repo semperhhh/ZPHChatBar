@@ -13,6 +13,7 @@
 #import "ZPHMessageTableViewCellText.h"
 #import "ZPHMessageTableViewCellImage.h"
 #import "ZPHMessageTableViewCellVoice.h"
+#import "ZPHChatManager.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ZHChatBarDelegate>
 /**
@@ -164,6 +165,8 @@
     
     NSLog(@"send message - %@",message);
     [self addMessageWithDictionary:@{@"category":@0,@"content":message} isSelf:YES];
+    
+    [ZPHChatManager sendChatMessageWithContent:message];
 }
 
 -(void)chatBarSendPictureWithChatBar:(ZHChatBar *)chatBar picture:(UIImage *)image {
