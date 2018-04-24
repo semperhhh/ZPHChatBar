@@ -31,7 +31,18 @@
 
 -(void)chatMessageWithContent:(NSString *)content {
     
+    if (!content || content == nil) return;
+    
     NSString *URLString = @"http://openapi.tuling123.com/openapi/api/v2";
+    NSDictionary *perceptionDictionary = @{@"inputText":@{@"text":content}};
+    NSDictionary *userInfoDictionary = @{@"apiKey":@"f810e4f4c7e140f39cb273b5cf70d31c",@"userId":@"123"};
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithObjectsAndKeys:perceptionDictionary,@"perception",userInfoDictionary,@"userInfo", nil];
+    [ZPHUploadFile requestWithURLString:URLString httpMethod:@"POST" params:param success:^(id data) {
+        
+        NSLog(@"message data = %@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+    } fail:^(NSError *error) {
+        NSLog(@"message error = %@",error);
+    }];
 }
 
 #pragma mark --发送图片消息

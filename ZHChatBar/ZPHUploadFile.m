@@ -7,18 +7,76 @@
 //
 
 #define kBoundary @"boundary"
-
 #import "ZPHUploadFile.h"
-@interface ZPHUploadFile ()
 
-@property (nonatomic,strong)dispatch_queue_t uploadQueue;
+@interface ZPHUploadFile ()
+@property (nonatomic,strong)dispatch_queue_t uploadQueue;//上传图片队列
 @end
 @implementation ZPHUploadFile
+
++(instancetype)shareManager {
+    
+    static dispatch_once_t onceToken;
+    static ZPHUploadFile *netWork = nil;
+    dispatch_once(&onceToken, ^{
+        netWork = [[ZPHUploadFile alloc]init];
+    });
+    
+    return netWork;
+}
+
+//网络请求
++(void)requestWithURLString:(NSString *)URLString httpMethod:(NSString *)method params:(NSDictionary *)params success:(void (^)(id data))success fail:(void (^)(NSError *error))fail {
+    
+    return [[self shareManager]uploadRequestWithURLString:URLString httpMethod:method params:params success:success fail:fail];
+}
+
+-(void)uploadRequestWithURLString:(NSString *)URLString httpMethod:(NSString *)method params:(NSDictionary *)params success:(void (^)(id data))success fail:(void (^)(NSError *error))fail {
+    
+    //创建一个网络请求
+    NSURL *url = [NSURL URLWithString:URLString];
+    
+    if ([method isEqualToString:@"GET"]) { //GET
+        
+        //发送网络请求(网络请求是个耗时操作/在子线程发送) 利用NSUrlConnection发送一个异步的网络请求
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            if (error) {
+                if (fail) fail(error);//失败回调
+                return;
+            }
+    
+            if (success) success(data);//成功回调
+        }];
+       
+        [dataTask resume];//执行Task
+        
+    }else if ([method isEqualToString:@"POST"]) { //POST
+        
+        //创建可变请求对象
+        NSMutableURLRequest *requestM = [NSMutableURLRequest requestWithURL:url];
+        //修改请求方法
+        requestM.HTTPMethod = @"POST";
+        requestM.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:requestM completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            if (error) {
+                if (fail) fail(error);//失败回调
+                return;
+            }
+
+            if (success) success(data);//成功回调
+        }];
+        [task resume];//执行task
+    }
+}
 
 //上传图片
 +(void)uploadRequestWithUrl:(NSString *)urlStr Data:(NSData *)fileData fileType:(ZPHFileType)fileType fileName:(NSString *)fileName success:(void(^)(NSData *successData))successBlock error:(void(^)(NSError *error))errorBlock {
     
-    return [[self alloc]implementationUploadRequestWithUrl:urlStr Data:fileData fileType:fileType fileName:fileName success:successBlock error:errorBlock];
+    return [[self shareManager]implementationUploadRequestWithUrl:urlStr Data:fileData fileType:fileType fileName:fileName success:successBlock error:errorBlock];
 }
 
 -(void)implementationUploadRequestWithUrl:(NSString *)urlStr Data:(NSData *)fileData fileType:(ZPHFileType)fileType fileName:(NSString *)fileName success:(void(^)(NSData *successData))successBlock error:(void(^)(NSError *error))errorBlock {
