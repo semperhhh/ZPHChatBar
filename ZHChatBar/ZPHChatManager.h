@@ -15,8 +15,9 @@
  发送文本消息
 
  @param content 文本
+ @param answerBlock 机器人答案回调
  */
-+(void)sendChatMessageWithContent:(NSString *)content;
++(void)sendChatMessageWithContent:(NSString *)content answerBlock:(void(^)(id data))answerBlock;
 /**
  发送图片消息
 

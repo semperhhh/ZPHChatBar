@@ -47,7 +47,7 @@
                 return;
             }
     
-            if (success) success(data);//成功回调
+            if (success) success([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]);//成功回调
         }];
        
         [dataTask resume];//执行Task
@@ -67,7 +67,7 @@
                 return;
             }
 
-            if (success) success(data);//成功回调
+            if (success) success([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]);//成功回调
         }];
         [task resume];//执行task
     }

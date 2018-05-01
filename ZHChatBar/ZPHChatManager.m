@@ -24,12 +24,12 @@
 }
 
 #pragma mark --发送文本消息
-+(void)sendChatMessageWithContent:(NSString *)content {
++(void)sendChatMessageWithContent:(NSString *)content answerBlock:(void(^)(id data))answerBlock {
 
-    return [[ZPHChatManager shareManager]chatMessageWithContent:content];
+    return [[ZPHChatManager shareManager]chatMessageWithContent:content answerBlock:answerBlock];
 }
 
--(void)chatMessageWithContent:(NSString *)content {
+-(void)chatMessageWithContent:(NSString *)content answerBlock:(void(^)(id data))answerBlock{
     
     if (!content || content == nil) return;
     
@@ -38,8 +38,7 @@
     NSDictionary *userInfoDictionary = @{@"apiKey":@"f810e4f4c7e140f39cb273b5cf70d31c",@"userId":@"123"};
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithObjectsAndKeys:perceptionDictionary,@"perception",userInfoDictionary,@"userInfo", nil];
     [ZPHUploadFile requestWithURLString:URLString httpMethod:@"POST" params:param success:^(id data) {
-        
-        NSLog(@"message data = %@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        answerBlock ? answerBlock(data) : nil;
     } fail:^(NSError *error) {
         NSLog(@"message error = %@",error);
     }];

@@ -50,7 +50,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0];
     
     //消息列表
-    _messageTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height -_zhChatBar.frame.size.height -64) style:UITableViewStylePlain];
+    _messageTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height -64 -64) style:UITableViewStylePlain];
     _messageTableView.backgroundColor = [UIColor clearColor];
     _messageTableView.dataSource = self;
     _messageTableView.delegate = self;
@@ -163,10 +163,18 @@
 #pragma mark --ZHChatBarDelegate
 -(void)chatBarSendMessageWithChatBar:(ZHChatBar *)chatBar message:(NSString *)message {
     
-    NSLog(@"send message - %@",message);
+//    NSLog(@"send message - %@",message);
     [self addMessageWithDictionary:@{@"category":@0,@"content":message} isSelf:YES];
     
-    [ZPHChatManager sendChatMessageWithContent:message];
+    [ZPHChatManager sendChatMessageWithContent:message answerBlock:^(id data) {
+        NSLog(@"请求到的data = %@",data);
+        NSDictionary *dataDictionary = data;
+        NSArray *results = dataDictionary[@"results"];
+        for (NSDictionary *resultDict in results) {
+            NSDictionary *valuesDict = resultDict[@"values"];
+            [self addMessageWithDictionary:@{@"category":@0,@"content":valuesDict[@"text"]} isSelf:NO];
+        }
+    }];
 }
 
 -(void)chatBarSendPictureWithChatBar:(ZHChatBar *)chatBar picture:(UIImage *)image {
