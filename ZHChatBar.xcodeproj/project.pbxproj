@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		563F6CA582FDE8D97CE66F20 /* libPods-ZHChatBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 699DDBC732276F673B34D825 /* libPods-ZHChatBar.a */; };
 		DA2EDD531F6FBD3C0080B57A /* ZPHChatLabelling.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2EDD521F6FBD3C0080B57A /* ZPHChatLabelling.m */; };
 		DA2EDD561F70F5D10080B57A /* ZPHChatMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2EDD551F70F5D10080B57A /* ZPHChatMoreView.m */; };
 		DA96AC171F6771E300F50FC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC161F6771E300F50FC1 /* main.m */; };
@@ -46,6 +47,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		699DDBC732276F673B34D825 /* libPods-ZHChatBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHChatBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7991A24CA2F6D9C99147D26B /* Pods-ZHChatBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatBar/Pods-ZHChatBar.release.xcconfig"; sourceTree = "<group>"; };
+		B512E6E9BE079F467016218E /* Pods-ZHChatBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatBar/Pods-ZHChatBar.debug.xcconfig"; sourceTree = "<group>"; };
 		DA2EDD511F6FBD3C0080B57A /* ZPHChatLabelling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPHChatLabelling.h; sourceTree = "<group>"; };
 		DA2EDD521F6FBD3C0080B57A /* ZPHChatLabelling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPHChatLabelling.m; sourceTree = "<group>"; };
 		DA2EDD541F70F5D10080B57A /* ZPHChatMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPHChatMoreView.h; sourceTree = "<group>"; };
@@ -96,17 +100,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563F6CA582FDE8D97CE66F20 /* libPods-ZHChatBar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03508FD780C98882E1D079DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B512E6E9BE079F467016218E /* Pods-ZHChatBar.debug.xcconfig */,
+				7991A24CA2F6D9C99147D26B /* Pods-ZHChatBar.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89A87FE748D08F7F96C8827A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				699DDBC732276F673B34D825 /* libPods-ZHChatBar.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DA96AC091F6771E300F50FC1 = {
 			isa = PBXGroup;
 			children = (
 				DA96AC141F6771E300F50FC1 /* ZHChatBar */,
 				DA96AC131F6771E300F50FC1 /* Products */,
+				03508FD780C98882E1D079DE /* Pods */,
+				89A87FE748D08F7F96C8827A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA96AC2C1F6771E300F50FC1 /* Build configuration list for PBXNativeTarget "ZHChatBar" */;
 			buildPhases = (
+				FBB70E9C84F51E1953BA6321 /* [CP] Check Pods Manifest.lock */,
 				DA96AC0E1F6771E300F50FC1 /* Sources */,
 				DA96AC0F1F6771E300F50FC1 /* Frameworks */,
 				DA96AC101F6771E300F50FC1 /* Resources */,
@@ -266,6 +291,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FBB70E9C84F51E1953BA6321 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZHChatBar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA96AC0E1F6771E300F50FC1 /* Sources */ = {
@@ -409,6 +455,7 @@
 		};
 		DA96AC2D1F6771E300F50FC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B512E6E9BE079F467016218E /* Pods-ZHChatBar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3LQZWC5F6U;
@@ -421,6 +468,7 @@
 		};
 		DA96AC2E1F6771E300F50FC1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7991A24CA2F6D9C99147D26B /* Pods-ZHChatBar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3LQZWC5F6U;
