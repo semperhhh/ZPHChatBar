@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <FMDB/FMDatabase.h>
 
 @interface AppDelegate ()
 
+@property (nonatomic,strong)FMDatabase *dataBase;
 @end
 
 @implementation AppDelegate
@@ -17,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     return YES;
 }
 

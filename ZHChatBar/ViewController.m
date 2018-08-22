@@ -14,6 +14,7 @@
 #import "ZPHMessageTableViewCellImage.h"
 #import "ZPHMessageTableViewCellVoice.h"
 #import "ZPHChatManager.h"
+#import <FMDB/FMDatabase.h>
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ZHChatBarDelegate>
 /**
@@ -36,6 +37,10 @@
  消息数组
  */
 @property (nonatomic,strong)NSMutableArray *messageArray;
+/**
+ 数据库
+ */
+@property (nonatomic,strong)FMDatabase *dataBase;
 @end
 
 @implementation ViewController
@@ -77,6 +82,28 @@
     [_messageTableView registerClass:[ZPHMessageTableViewCellText class] forCellReuseIdentifier:@"OwnerSelf_text"];
     [_messageTableView registerClass:[ZPHMessageTableViewCellImage class] forCellReuseIdentifier:@"OwnerSelf_image"];
     [_messageTableView registerClass:[ZPHMessageTableViewCellVoice class] forCellReuseIdentifier:@"OwnerSelf_voice"];
+    
+    //创建数据库
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+    NSString *fileName = [path stringByAppendingPathComponent:@"message.sqlite"];
+    NSLog(@"fileName = %@",fileName);
+    
+    //获取数据库
+    _dataBase = [FMDatabase databaseWithPath:fileName];
+    
+    if ([_dataBase open]) {
+        NSLog(@"打开数据库成功");
+    }else {
+        NSLog(@"打开数据库失败");
+    }
+    
+    //数据库建表
+    BOOL result = [_dataBase executeUpdate:@"CREATE TABLE IF NOT EXISTS t_message (id integer PRIMARY KEY AUTOINCREMENT, name text, message text, time text, category integer)"];
+    if (result) {
+        NSLog(@"创建表成功");
+    }else {
+        NSLog(@"创建表失败");
+    }
 }
 
 //列表点击事件
@@ -163,18 +190,35 @@
 #pragma mark --ZHChatBarDelegate
 -(void)chatBarSendMessageWithChatBar:(ZHChatBar *)chatBar message:(NSString *)message {
     
-//    NSLog(@"send message - %@",message);
+    NSLog(@"send message - %@",message);
     [self addMessageWithDictionary:@{@"category":@0,@"content":message} isSelf:YES];
-    
+
     [ZPHChatManager sendChatMessageWithContent:message answerBlock:^(id data) {
+        
         NSLog(@"请求到的data = %@",data);
         NSDictionary *dataDictionary = data;
         NSArray *results = dataDictionary[@"results"];
         for (NSDictionary *resultDict in results) {
             NSDictionary *valuesDict = resultDict[@"values"];
             [self addMessageWithDictionary:@{@"category":@0,@"content":valuesDict[@"text"]} isSelf:NO];
+            
+            //保存到库
+            BOOL success = [_dataBase executeUpdate:@"insert into t_message (name, category, message) values (?, ?, ?);",@"robit",@0,valuesDict[@"text"]];
+            if (success) {
+                NSLog(@"保存到数据库成功");
+            }else {
+                NSLog(@"保存到数据库失败");
+            }
         }
     }];
+    
+    //保存到库
+    BOOL success = [_dataBase executeUpdate:@"insert into t_message (name, category, message) values (?, ?, ?);", @"myself", @0, message];
+    if (success) {
+        NSLog(@"保存到数据库成功");
+    }else {
+        NSLog(@"保存到数据库失败");
+    }
 }
 
 -(void)chatBarSendPictureWithChatBar:(ZHChatBar *)chatBar picture:(UIImage *)image {
