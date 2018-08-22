@@ -82,13 +82,26 @@
     [_messageTableView registerClass:[ZPHMessageTableViewCellText class] forCellReuseIdentifier:@"OwnerSelf_text"];
     [_messageTableView registerClass:[ZPHMessageTableViewCellImage class] forCellReuseIdentifier:@"OwnerSelf_image"];
     [_messageTableView registerClass:[ZPHMessageTableViewCellVoice class] forCellReuseIdentifier:@"OwnerSelf_voice"];
+
+    [self createData];
     
-    //创建数据库
+    NSArray *array = [self readData];
+    
+    for (NSDictionary *dict in array) {
+        
+        ZPHMessageTableViewCellLayout *layout = [[ZPHMessageTableViewCellLayout alloc]initWithDictionary:dict];
+        //保存到数组
+        [self.messageArray addObject:layout];
+    }
+}
+
+//创建数据库
+-(void)createData {
+    
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
     NSString *fileName = [path stringByAppendingPathComponent:@"message.sqlite"];
     NSLog(@"fileName = %@",fileName);
     
-    //获取数据库
     _dataBase = [FMDatabase databaseWithPath:fileName];
     
     if ([_dataBase open]) {
@@ -98,12 +111,42 @@
     }
     
     //数据库建表
-    BOOL result = [_dataBase executeUpdate:@"CREATE TABLE IF NOT EXISTS t_message (id integer PRIMARY KEY AUTOINCREMENT, name text, message text, time text, category integer)"];
+    BOOL result = [_dataBase executeUpdate:@"CREATE TABLE IF NOT EXISTS t_message (id integer PRIMARY KEY AUTOINCREMENT, name text, message text, time text, category integer, isSelf bool)"];
     if (result) {
         NSLog(@"创建表成功");
     }else {
         NSLog(@"创建表失败");
     }
+}
+
+//读取数据库
+-(NSArray *)readData {
+    
+    FMResultSet *resultSet = [_dataBase executeQuery:@"select * from t_message"];
+    
+    if (resultSet) {
+        NSMutableArray *nmArray = [NSMutableArray array];
+        while ([resultSet next]) {
+            NSString *name = [resultSet objectForColumn:@"name"];
+            NSString *category = [resultSet objectForColumn:@"category"];
+            NSString *message = [resultSet objectForColumn:@"message"];
+            NSString *time = [resultSet objectForColumn:@"time"];
+            NSString *isSelf = [resultSet objectForColumn:@"isSelf"];
+            NSLog(@"name= %@, category= %@, message= %@ time= %@ isSelf= %@",name,category,message,time,isSelf);
+            NSMutableDictionary *nmDictionary = [NSMutableDictionary dictionary];
+            [nmDictionary setValue:name forKey:@"name"];
+            [nmDictionary setValue:@([category integerValue]) forKey:@"category"];
+            [nmDictionary setValue:message forKey:@"content"];
+            [nmDictionary setValue:time forKey:@"time"];
+            [nmDictionary setValue:@([isSelf integerValue]) forKey:@"isSelf"];
+            [nmArray addObject:nmDictionary];
+        }
+        return nmArray;
+        
+    }else {
+        NSLog(@"查询失败");
+    }
+    return nil;
 }
 
 //列表点击事件
@@ -203,7 +246,7 @@
             [self addMessageWithDictionary:@{@"category":@0,@"content":valuesDict[@"text"]} isSelf:NO];
             
             //保存到库
-            BOOL success = [_dataBase executeUpdate:@"insert into t_message (name, category, message) values (?, ?, ?);",@"robit",@0,valuesDict[@"text"]];
+            BOOL success = [_dataBase executeUpdate:@"insert into t_message (name, category, message, isSelf) values (?, ?, ?, ?);", @"robit" ,@0, valuesDict[@"text"], @0];
             if (success) {
                 NSLog(@"保存到数据库成功");
             }else {
@@ -213,7 +256,7 @@
     }];
     
     //保存到库
-    BOOL success = [_dataBase executeUpdate:@"insert into t_message (name, category, message) values (?, ?, ?);", @"myself", @0, message];
+    BOOL success = [_dataBase executeUpdate:@"insert into t_message (name, category, message, isSelf) values (?, ?, ?, ?);", @"myself", @0, message, @1];
     if (success) {
         NSLog(@"保存到数据库成功");
     }else {

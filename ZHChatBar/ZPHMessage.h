@@ -10,6 +10,10 @@
 
 @interface ZPHMessage : NSObject
 /**
+ 名字
+ */
+@property (nonatomic,copy)NSString *name;
+/**
  内容
  */
 @property (nonatomic,copy)NSString *content;

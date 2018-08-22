@@ -40,16 +40,20 @@
     
     CGFloat kviewWidth = [UIScreen mainScreen].bounds.size.width;
 
-    NSString *timeString = [self messageTimeWithModelTime:[NSString stringWithFormat:@"%@",model.time]];
-    NSMutableAttributedString *timeAttributedString = [[NSMutableAttributedString alloc]init];
-    [timeAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:timeString]];
-    [timeAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, timeAttributedString.length)];
-    CGSize timeSize = [self sizeWithAttributedString:timeAttributedString proSize:CGSizeMake(kviewWidth, MAXFLOAT)];
-    _timeFrame = CGRectMake(kviewWidth/2 -timeSize.width/2, 15, timeSize.width, 20);
-    _timeAttributedString = [[NSAttributedString alloc]initWithAttributedString:timeAttributedString];
+    if (model.time) {
+        NSString *timeString = [self messageTimeWithModelTime:[NSString stringWithFormat:@"%@",model.time]];
+        NSMutableAttributedString *timeAttributedString = [[NSMutableAttributedString alloc]init];
+        [timeAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:timeString]];
+        [timeAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, timeAttributedString.length)];
+        CGSize timeSize = [self sizeWithAttributedString:timeAttributedString proSize:CGSizeMake(kviewWidth, MAXFLOAT)];
+        _timeFrame = CGRectMake(kviewWidth/2 -timeSize.width/2, 15, timeSize.width, 20);
+        _timeAttributedString = [[NSAttributedString alloc]initWithAttributedString:timeAttributedString];
+    }else {
+        
+        _timeFrame = CGRectZero;
+    }
     //头像
     _headPictureFrame = CGRectMake(5, CGRectGetMaxY(_timeFrame) +15, 40, 40);
-
     
     self.rowHeight = CGRectGetMaxY(_headPictureFrame) +5;//行高
 }
@@ -62,14 +66,19 @@
     CGFloat kviewWidth = [UIScreen mainScreen].bounds.size.width;
     
     //时间
+    if (model.time) {
+
+        NSString *timeString = [self messageTimeWithModelTime:[NSString stringWithFormat:@"%@",model.time]];
+        NSMutableAttributedString *timeAttributedString = [[NSMutableAttributedString alloc]init];
+        [timeAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:timeString]];
+        [timeAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, timeAttributedString.length)];
+        CGSize timeSize = [self sizeWithAttributedString:timeAttributedString proSize:CGSizeMake(kviewWidth, MAXFLOAT)];
+        _timeFrame = CGRectMake(kviewWidth/2 -timeSize.width/2, 15, timeSize.width, 20);
+        _timeAttributedString = [[NSAttributedString alloc]initWithAttributedString:timeAttributedString];
+    }else {
         
-    NSString *timeString = [self messageTimeWithModelTime:[NSString stringWithFormat:@"%@",model.time]];
-    NSMutableAttributedString *timeAttributedString = [[NSMutableAttributedString alloc]init];
-    [timeAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:timeString]];
-    [timeAttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, timeAttributedString.length)];
-    CGSize timeSize = [self sizeWithAttributedString:timeAttributedString proSize:CGSizeMake(kviewWidth, MAXFLOAT)];
-    _timeFrame = CGRectMake(kviewWidth/2 -timeSize.width/2, 15, timeSize.width, 20);
-    _timeAttributedString = [[NSAttributedString alloc]initWithAttributedString:timeAttributedString];
+        _timeFrame = CGRectZero;
+    }
     //头像
     _headPictureFrame = CGRectMake(kviewWidth - 40 -10, CGRectGetMaxY(_timeFrame) +15, 40, 40);
     self.rowHeight = CGRectGetMaxY(_headPictureFrame) +5;//行高
