@@ -6,12 +6,6 @@
 //  Copyright © 2017年 zph. All rights reserved.
 //
 
-//适配iphonex
-#define StausbarHeight  ([[UIApplication sharedApplication] statusBarFrame].size.height)
-#define iPhoneX  StausbarHeight >20? YES:NO
-// 底部安全区域远离高度
-#define kBottomSafeHeight   (StausbarHeight >20? 34 : 0)
-
 #import "ZHChatBar.h"
 #import "ZPHTextView.h"
 #import <AVFoundation/AVFoundation.h>
@@ -50,7 +44,7 @@ CGFloat chatBarFaceHeight = 200;
 
 -(instancetype)init {
     
-    self = [self initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height -64, [UIScreen mainScreen].bounds.size.width, chatBarHeight)];
+    self = [self initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height -chatBarHeight -kBottomSafeHeight, [UIScreen mainScreen].bounds.size.width, chatBarHeight)];
     
     return self;
 }
@@ -294,16 +288,16 @@ CGFloat chatBarFaceHeight = 200;
 -(void)endInputing {
     
     [self.textView resignFirstResponder];//取消键盘响应
-    [self setFrame:CGRectMake(0, self.superViewHeight -chatBarHeight, self.frame.size.width, chatBarHeight) animated:YES];//输入框移到底部
+    [self setFrame:CGRectMake(0, self.superViewHeight -chatBarHeight -kBottomSafeHeight, self.frame.size.width, chatBarHeight) animated:YES];//输入框移到底部
 }
 
 //chatbar到底部的距离
 -(CGFloat)bottomHeight {
     
     if (self.chatmoreView.superview) {
-        return MAX(self.keyboardFrame.size.height, self.chatmoreView.frame.size.height);
+        return MAX(self.keyboardFrame.size.height, self.chatmoreView.frame.size.height +kBottomSafeHeight);
     }else{
-        return MAX(self.keyboardFrame.size.height, CGFLOAT_MIN);
+        return MAX(self.keyboardFrame.size.height, CGFLOAT_MIN +kBottomSafeHeight);
     }
 }
 

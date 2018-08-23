@@ -61,7 +61,7 @@
         }
     }else {
 
-        _headImageView.image = [UIImage imageNamed:@"message_headImage"];
+        _headImageView.image = [UIImage imageNamed:@"message_kefu"];
 
     }
     _rowHeight = layout.rowHeight;

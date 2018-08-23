@@ -1,0 +1,30 @@
+//
+//  PrefixHeader.pch
+//  ZHChatBar
+//
+//  Created by zph on 23/08/2018.
+//  Copyright © 2018 zph. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//屏幕宽
+#define Kscreen_width [UIScreen mainScreen].bounds.size.width
+#define Kscreen_height [UIScreen mainScreen].bounds.size.height
+
+//适配iphonex
+#define StausbarHeight  ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define iPhoneX  StausbarHeight >20? YES:NO
+// 底部安全区域远离高度
+#define kBottomSafeHeight   (StausbarHeight >20? 34 : 0)
+#define kNavigationBarHeight 44
+#define kStatusBarHeight 20
+#define kTopBarHeight (StausbarHeight >20? 88 : 64)
+#define kTabBarHeight (StausbarHeight >20? 83 : 49)
+#define kXMChatBarHeight (StausbarHeight >20? 78 : 44)
+
+#endif /* PrefixHeader_pch */

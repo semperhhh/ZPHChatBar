@@ -55,7 +55,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0];
     
     //消息列表
-    _messageTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height -64 -64) style:UITableViewStylePlain];
+    _messageTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kTopBarHeight, self.view.frame.size.width, self.view.frame.size.height -kTopBarHeight -64) style:UITableViewStylePlain];
     _messageTableView.backgroundColor = [UIColor clearColor];
     _messageTableView.dataSource = self;
     _messageTableView.delegate = self;
