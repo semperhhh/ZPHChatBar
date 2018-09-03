@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.title = @"对话";
-    self.view.backgroundColor = UIColorRandom;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Kscreen_width, Kscreen_height) style:UITableViewStylePlain];
     _tableView.dataSource = self;

@@ -154,7 +154,6 @@ CGFloat chatBarFaceHeight = 200;
             
             NSLog(@"face");
             [self showFaceView:YES];
-            [self showMoreView:NO];
         }
             break;
         case ZPHChatLabellingTypePicture: {
@@ -172,7 +171,6 @@ CGFloat chatBarFaceHeight = 200;
             
             NSLog(@"more");
             [self showMoreView:YES];
-            [self showFaceView:NO];
         }
             break;
         default:
@@ -288,6 +286,8 @@ CGFloat chatBarFaceHeight = 200;
 -(void)endInputing {
     
     [self.textView resignFirstResponder];//取消键盘响应
+    [self showMoreView:NO];
+    [self showFaceView:NO];
     [self setFrame:CGRectMake(0, self.superViewHeight -chatBarHeight -kBottomSafeHeight, self.frame.size.width, chatBarHeight) animated:YES];//输入框移到底部
 }
 

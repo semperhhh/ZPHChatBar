@@ -19,6 +19,17 @@
     // Do any additional setup after loading the view.
 }
 
++(void)initialize {
+    
+    //外观代理
+    UINavigationBar *navigationBar = [UINavigationBar appearance];
+    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+    [navigationBar setTitleTextAttributes:attrs];
+    navigationBar.barTintColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
+    navigationBar.tintColor = [UIColor blackColor];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

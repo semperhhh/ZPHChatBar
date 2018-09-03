@@ -29,15 +29,15 @@
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
     
-    ZPHomeViewController *home = [[ZPHomeViewController alloc]init];
-    ZPNavigationController *navi = [[ZPNavigationController alloc]initWithRootViewController:home];
-    navi.tabBarItem.title = @"首页";
-    [tabbar addChildViewController:navi];
-    
     ZPMessageHomeViewController *message = [[ZPMessageHomeViewController alloc]init];
     ZPNavigationController *messageNavi = [[ZPNavigationController alloc]initWithRootViewController:message];
     messageNavi.tabBarItem.title = @"对话";
     [tabbar addChildViewController:messageNavi];
+    
+    ZPHomeViewController *home = [[ZPHomeViewController alloc]init];
+    ZPNavigationController *navi = [[ZPNavigationController alloc]initWithRootViewController:home];
+    navi.tabBarItem.title = @"首页";
+    [tabbar addChildViewController:navi];
     
     return YES;
 }
