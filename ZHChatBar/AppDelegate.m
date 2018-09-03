@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import <FMDB/FMDatabase.h>
+#import "ZPTabBarController.h"
+#import "ZPNavigationController.h"
+#import "ZPHomeViewController.h"//首页
+#import "ZPMessageHomeViewController.h"//对话
 
 @interface AppDelegate ()
 
@@ -19,6 +23,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, Kscreen_width, Kscreen_height)];
+    ZPTabBarController *tabbar = [[ZPTabBarController alloc]init];
+    self.window.rootViewController = tabbar;
+    [self.window makeKeyAndVisible];
+    
+    ZPHomeViewController *home = [[ZPHomeViewController alloc]init];
+    ZPNavigationController *navi = [[ZPNavigationController alloc]initWithRootViewController:home];
+    navi.tabBarItem.title = @"首页";
+    [tabbar addChildViewController:navi];
+    
+    ZPMessageHomeViewController *message = [[ZPMessageHomeViewController alloc]init];
+    ZPNavigationController *messageNavi = [[ZPNavigationController alloc]initWithRootViewController:message];
+    messageNavi.tabBarItem.title = @"对话";
+    [tabbar addChildViewController:messageNavi];
     
     return YES;
 }

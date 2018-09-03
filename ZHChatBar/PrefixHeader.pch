@@ -27,4 +27,7 @@
 #define kTabBarHeight (StausbarHeight >20? 83 : 49)
 #define kXMChatBarHeight (StausbarHeight >20? 78 : 44)
 
+//随机颜色
+#define UIColorRandom [UIColor colorWithRed:arc4random_uniform(255.0)/255.0 green:arc4random_uniform(255.0)/255.0 blue:arc4random_uniform(255.0)/255.0 alpha:1.0]
+
 #endif /* PrefixHeader_pch */

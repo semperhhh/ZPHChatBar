@@ -44,7 +44,8 @@ CGFloat chatBarFaceHeight = 200;
 
 -(instancetype)init {
     
-    self = [self initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height -chatBarHeight -kBottomSafeHeight, [UIScreen mainScreen].bounds.size.width, chatBarHeight)];
+    self = [self initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height -chatBarHeight -kBottomSafeHeight, [UIScreen mainScreen].bounds.size.width, chatBarHeight +kBottomSafeHeight)];
+    self.backgroundColor = [UIColor whiteColor];
     
     return self;
 }
@@ -182,7 +183,6 @@ CGFloat chatBarFaceHeight = 200;
 #pragma mark --切换界面
 -(void)showViewWithType:(PHViewShowType)showType {
     
-    
 }
 
 //表情展示
@@ -308,7 +308,7 @@ CGFloat chatBarFaceHeight = 200;
     
     if (!_textView) {
     
-        _textView = [[ZPHTextView alloc]initWithFrame:CGRectMake(5, 2, self.bounds.size.width -10, self.bounds.size.height -32)];
+        _textView = [[ZPHTextView alloc]initWithFrame:CGRectMake(5, 2, self.bounds.size.width -10, self.bounds.size.height -32 -kBottomSafeHeight)];
         _textView.inputAccessoryView = [[UIView alloc] init];
         _textView.font = [UIFont systemFontOfSize:16.0f];
         _textView.delegate = self;
@@ -327,7 +327,7 @@ CGFloat chatBarFaceHeight = 200;
     
     if (!_backView) {
         
-        _backView = [[ZPHChatLabelling alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_textView.frame), self.bounds.size.width, 32)];
+        _backView = [[ZPHChatLabelling alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_textView.frame), self.bounds.size.width, 32 +kBottomSafeHeight)];
         _backView.dataSource = self;
         _backView.delegate = self;
     }

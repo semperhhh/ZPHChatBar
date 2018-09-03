@@ -3,17 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		563F6CA582FDE8D97CE66F20 /* libPods-ZHChatBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 699DDBC732276F673B34D825 /* libPods-ZHChatBar.a */; };
+		7C9703E8213CCE16000A7989 /* ZPMessageHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9703E7213CCE16000A7989 /* ZPMessageHomeViewController.m */; };
+		7C9703EB213CD1E6000A7989 /* ZPMessageHomeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9703EA213CD1E6000A7989 /* ZPMessageHomeTableCell.m */; };
+		7CB3933A213CC9BB005226C8 /* ZPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB39339213CC9BB005226C8 /* ZPNavigationController.m */; };
+		7CB3933D213CC9E5005226C8 /* ZPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3933C213CC9E5005226C8 /* ZPTabBarController.m */; };
+		7CB39340213CCA19005226C8 /* ZPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3933F213CCA19005226C8 /* ZPHomeViewController.m */; };
 		DA2EDD531F6FBD3C0080B57A /* ZPHChatLabelling.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2EDD521F6FBD3C0080B57A /* ZPHChatLabelling.m */; };
 		DA2EDD561F70F5D10080B57A /* ZPHChatMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2EDD551F70F5D10080B57A /* ZPHChatMoreView.m */; };
 		DA96AC171F6771E300F50FC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC161F6771E300F50FC1 /* main.m */; };
 		DA96AC1A1F6771E300F50FC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC191F6771E300F50FC1 /* AppDelegate.m */; };
-		DA96AC1D1F6771E300F50FC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC1C1F6771E300F50FC1 /* ViewController.m */; };
-		DA96AC201F6771E300F50FC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA96AC1E1F6771E300F50FC1 /* Main.storyboard */; };
+		DA96AC1D1F6771E300F50FC1 /* ZPMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC1C1F6771E300F50FC1 /* ZPMessageViewController.m */; };
 		DA96AC231F6771E300F50FC1 /* ZHChatBar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA96AC211F6771E300F50FC1 /* ZHChatBar.xcdatamodeld */; };
 		DA96AC251F6771E300F50FC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA96AC241F6771E300F50FC1 /* Assets.xcassets */; };
 		DA96AC281F6771E300F50FC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA96AC261F6771E300F50FC1 /* LaunchScreen.storyboard */; };
@@ -49,6 +53,16 @@
 /* Begin PBXFileReference section */
 		699DDBC732276F673B34D825 /* libPods-ZHChatBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHChatBar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7991A24CA2F6D9C99147D26B /* Pods-ZHChatBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatBar/Pods-ZHChatBar.release.xcconfig"; sourceTree = "<group>"; };
+		7C9703E6213CCE16000A7989 /* ZPMessageHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMessageHomeViewController.h; sourceTree = "<group>"; };
+		7C9703E7213CCE16000A7989 /* ZPMessageHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMessageHomeViewController.m; sourceTree = "<group>"; };
+		7C9703E9213CD1E6000A7989 /* ZPMessageHomeTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMessageHomeTableCell.h; sourceTree = "<group>"; };
+		7C9703EA213CD1E6000A7989 /* ZPMessageHomeTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMessageHomeTableCell.m; sourceTree = "<group>"; };
+		7CB39338213CC9BB005226C8 /* ZPNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPNavigationController.h; sourceTree = "<group>"; };
+		7CB39339213CC9BB005226C8 /* ZPNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPNavigationController.m; sourceTree = "<group>"; };
+		7CB3933B213CC9E5005226C8 /* ZPTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPTabBarController.h; sourceTree = "<group>"; };
+		7CB3933C213CC9E5005226C8 /* ZPTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPTabBarController.m; sourceTree = "<group>"; };
+		7CB3933E213CCA19005226C8 /* ZPHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPHomeViewController.h; sourceTree = "<group>"; };
+		7CB3933F213CCA19005226C8 /* ZPHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPHomeViewController.m; sourceTree = "<group>"; };
 		B512E6E9BE079F467016218E /* Pods-ZHChatBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatBar/Pods-ZHChatBar.debug.xcconfig"; sourceTree = "<group>"; };
 		DA2EDD511F6FBD3C0080B57A /* ZPHChatLabelling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPHChatLabelling.h; sourceTree = "<group>"; };
 		DA2EDD521F6FBD3C0080B57A /* ZPHChatLabelling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPHChatLabelling.m; sourceTree = "<group>"; };
@@ -58,9 +72,8 @@
 		DA96AC161F6771E300F50FC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA96AC181F6771E300F50FC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA96AC191F6771E300F50FC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DA96AC1B1F6771E300F50FC1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DA96AC1C1F6771E300F50FC1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		DA96AC1F1F6771E300F50FC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DA96AC1B1F6771E300F50FC1 /* ZPMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMessageViewController.h; sourceTree = "<group>"; };
+		DA96AC1C1F6771E300F50FC1 /* ZPMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMessageViewController.m; sourceTree = "<group>"; };
 		DA96AC221F6771E300F50FC1 /* ZHChatBar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZHChatBar.xcdatamodel; sourceTree = "<group>"; };
 		DA96AC241F6771E300F50FC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA96AC271F6771E300F50FC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,6 +130,66 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7C9703E1213CCAC7000A7989 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7CB39338213CC9BB005226C8 /* ZPNavigationController.h */,
+				7CB39339213CC9BB005226C8 /* ZPNavigationController.m */,
+				7CB3933B213CC9E5005226C8 /* ZPTabBarController.h */,
+				7CB3933C213CC9E5005226C8 /* ZPTabBarController.m */,
+				7CB3933E213CCA19005226C8 /* ZPHomeViewController.h */,
+				7CB3933F213CCA19005226C8 /* ZPHomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7C9703E3213CCB12000A7989 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAFD19612069EDD10001930B /* ZPHMessage.h */,
+				DAFD19622069EDD10001930B /* ZPHMessage.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C9703E5213CCB37000A7989 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DAFD19702069F2430001930B /* ZPHMessageTableViewCell.h */,
+				DAFD19712069F2430001930B /* ZPHMessageTableViewCell.m */,
+				DAFD19732069F2540001930B /* ZPHMessageTableViewCellText.h */,
+				DAFD19742069F2540001930B /* ZPHMessageTableViewCellText.m */,
+				DAFD19762069F25D0001930B /* ZPHMessageTableViewCellImage.h */,
+				DAFD19772069F25D0001930B /* ZPHMessageTableViewCellImage.m */,
+				DAFD19792069F2680001930B /* ZPHMessageTableViewCellVoice.h */,
+				DAFD197A2069F2680001930B /* ZPHMessageTableViewCellVoice.m */,
+				DAFD19642069F1E60001930B /* ZPHMessageTableViewCellLayout.h */,
+				DAFD19652069F1E60001930B /* ZPHMessageTableViewCellLayout.m */,
+				DAFD19672069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.h */,
+				DAFD19682069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m */,
+				DAFD196A2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.h */,
+				DAFD196B2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m */,
+				DAFD196D2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.h */,
+				DAFD196E2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m */,
+				7C9703E9213CD1E6000A7989 /* ZPMessageHomeTableCell.h */,
+				7C9703EA213CD1E6000A7989 /* ZPMessageHomeTableCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7CB39337213CC8F8005226C8 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				7C9703E6213CCE16000A7989 /* ZPMessageHomeViewController.h */,
+				7C9703E7213CCE16000A7989 /* ZPMessageHomeViewController.m */,
+				DA96AC1B1F6771E300F50FC1 /* ZPMessageViewController.h */,
+				DA96AC1C1F6771E300F50FC1 /* ZPMessageViewController.m */,
+				7C9703E5213CCB37000A7989 /* Cell */,
+				7C9703E3213CCB12000A7989 /* Model */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		89A87FE748D08F7F96C8827A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,14 +219,11 @@
 		DA96AC141F6771E300F50FC1 /* ZHChatBar */ = {
 			isa = PBXGroup;
 			children = (
+				7C9703E1213CCAC7000A7989 /* Home */,
+				7CB39337213CC8F8005226C8 /* Message */,
 				DABEC9402074750700181F8D /* Manager */,
-				DAFD19602069EDAD0001930B /* Cell */,
-				DAFD195F2069ED940001930B /* Model */,
 				DA96AC181F6771E300F50FC1 /* AppDelegate.h */,
 				DA96AC191F6771E300F50FC1 /* AppDelegate.m */,
-				DA96AC1B1F6771E300F50FC1 /* ViewController.h */,
-				DA96AC1C1F6771E300F50FC1 /* ViewController.m */,
-				DA96AC1E1F6771E300F50FC1 /* Main.storyboard */,
 				DA96AC241F6771E300F50FC1 /* Assets.xcassets */,
 				DA96AC261F6771E300F50FC1 /* LaunchScreen.storyboard */,
 				DA96AC291F6771E300F50FC1 /* Info.plist */,
@@ -193,38 +263,6 @@
 			name = Manager;
 			sourceTree = "<group>";
 		};
-		DAFD195F2069ED940001930B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DAFD19612069EDD10001930B /* ZPHMessage.h */,
-				DAFD19622069EDD10001930B /* ZPHMessage.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		DAFD19602069EDAD0001930B /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				DAFD19642069F1E60001930B /* ZPHMessageTableViewCellLayout.h */,
-				DAFD19652069F1E60001930B /* ZPHMessageTableViewCellLayout.m */,
-				DAFD19672069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.h */,
-				DAFD19682069F1FD0001930B /* ZPHMessageTableViewCellLayoutText.m */,
-				DAFD196A2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.h */,
-				DAFD196B2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m */,
-				DAFD196D2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.h */,
-				DAFD196E2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m */,
-				DAFD19702069F2430001930B /* ZPHMessageTableViewCell.h */,
-				DAFD19712069F2430001930B /* ZPHMessageTableViewCell.m */,
-				DAFD19732069F2540001930B /* ZPHMessageTableViewCellText.h */,
-				DAFD19742069F2540001930B /* ZPHMessageTableViewCellText.m */,
-				DAFD19762069F25D0001930B /* ZPHMessageTableViewCellImage.h */,
-				DAFD19772069F25D0001930B /* ZPHMessageTableViewCellImage.m */,
-				DAFD19792069F2680001930B /* ZPHMessageTableViewCellVoice.h */,
-				DAFD197A2069F2680001930B /* ZPHMessageTableViewCellVoice.m */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +291,7 @@
 		DA96AC0A1F6771E300F50FC1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ZP;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = zph;
 				TargetAttributes = {
@@ -264,7 +303,7 @@
 				};
 			};
 			buildConfigurationList = DA96AC0D1F6771E300F50FC1 /* Build configuration list for PBXProject "ZHChatBar" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -288,7 +327,6 @@
 			files = (
 				DA96AC281F6771E300F50FC1 /* LaunchScreen.storyboard in Resources */,
 				DA96AC251F6771E300F50FC1 /* Assets.xcassets in Resources */,
-				DA96AC201F6771E300F50FC1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,10 +362,14 @@
 				DA2EDD531F6FBD3C0080B57A /* ZPHChatLabelling.m in Sources */,
 				DA96AC311F67720E00F50FC1 /* ZHChatBar.m in Sources */,
 				DAFD196F2069F22D0001930B /* ZPHMessageTableViewCellLayoutVoice.m in Sources */,
-				DA96AC1D1F6771E300F50FC1 /* ViewController.m in Sources */,
+				DA96AC1D1F6771E300F50FC1 /* ZPMessageViewController.m in Sources */,
 				DA2EDD561F70F5D10080B57A /* ZPHChatMoreView.m in Sources */,
 				DA96AC231F6771E300F50FC1 /* ZHChatBar.xcdatamodeld in Sources */,
+				7C9703E8213CCE16000A7989 /* ZPMessageHomeViewController.m in Sources */,
 				DAFD197B2069F2680001930B /* ZPHMessageTableViewCellVoice.m in Sources */,
+				7CB3933A213CC9BB005226C8 /* ZPNavigationController.m in Sources */,
+				7C9703EB213CD1E6000A7989 /* ZPMessageHomeTableCell.m in Sources */,
+				7CB3933D213CC9E5005226C8 /* ZPTabBarController.m in Sources */,
 				DAFD19752069F2540001930B /* ZPHMessageTableViewCellText.m in Sources */,
 				DAFD19632069EDD10001930B /* ZPHMessage.m in Sources */,
 				DAFD19722069F2430001930B /* ZPHMessageTableViewCell.m in Sources */,
@@ -335,6 +377,7 @@
 				DAFD19662069F1E60001930B /* ZPHMessageTableViewCellLayout.m in Sources */,
 				DABEC94920747ABD00181F8D /* ZPHUploadFile.m in Sources */,
 				DAFD196C2069F21D0001930B /* ZPHMessageTableViewCellLayoutImage.m in Sources */,
+				7CB39340213CCA19005226C8 /* ZPHomeViewController.m in Sources */,
 				DA96AC171F6771E300F50FC1 /* main.m in Sources */,
 				DAFD195E2067D6480001930B /* ZPHChatFaceView.m in Sources */,
 				DAFD19782069F25D0001930B /* ZPHMessageTableViewCellImage.m in Sources */,
@@ -346,14 +389,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DA96AC1E1F6771E300F50FC1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA96AC1F1F6771E300F50FC1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA96AC261F6771E300F50FC1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

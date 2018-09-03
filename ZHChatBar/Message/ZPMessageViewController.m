@@ -6,7 +6,7 @@
 //  Copyright © 2017年 zph. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ZPMessageViewController.h"
 #import "ZHChatBar.h"
 #import "ZPHMessageTableViewCellLayout.h"
 #import "ZPHMessageTableViewCell.h"
@@ -16,7 +16,7 @@
 #import "ZPHChatManager.h"
 #import <FMDB/FMDatabase.h>
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ZHChatBarDelegate>
+@interface ZPMessageViewController ()<UITableViewDelegate,UITableViewDataSource,ZHChatBarDelegate>
 /**
  文本框
  */
@@ -43,14 +43,11 @@
 @property (nonatomic,strong)FMDatabase *dataBase;
 @end
 
-@implementation ViewController
+@implementation ZPMessageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:self];
-    [UIApplication sharedApplication].delegate.window.rootViewController = navi;
-    
+
     self.navigationItem.title = @"对话";
     self.view.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:241.0/255.0 blue:241.0/255.0 alpha:1.0];
     
@@ -284,7 +281,7 @@
 //输入框改变
 -(void)chatBarFrameDidChange:(ZHChatBar *)chatBar frame:(CGRect)frame {
     
-    __weak ViewController *weakSelf = self;
+    __weak ZPMessageViewController *weakSelf = self;
     
     if (frame.origin.y == _messageTableView.frame.size.height) {
         return;
